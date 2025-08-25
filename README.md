@@ -16,7 +16,7 @@ It provides smart conversations, utility commands, and runs seamlessly with sess
 
 ## 📦 Project Structure  
 
-```
+`
 SpiChatBoT-WA/
 │── bot.js                # Main bot script
 │── package.json          # Dependencies & project info
@@ -26,8 +26,8 @@ SpiChatBoT-WA/
 │── README.md             # Documentation
 │── node_modules/         # Installed packages
 │── .wwebjs_auth/         # WhatsApp auth session (ignored)
-│── .wwebjs_cache/        # WhatsApp cache (ignored)
-```
+\── .wwebjs_cache/        # WhatsApp cache (ignored)
+`
 
 ---
 
