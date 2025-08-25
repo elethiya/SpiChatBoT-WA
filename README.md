@@ -81,18 +81,25 @@ git clone https://github.com/elethiya/SpiChatBoT-WA.git
 cd SpiChatBoT-WA
 ```
 
-### 2. Install Dependencies
+### 2. Install System Dependencies (Linux/Ubuntu)
 ```bash
-npm install
+sudo apt update && sudo apt install -y wget curl unzip xdg-utils libnss3 libxss1 libatk1.0-0 libcups2 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libgtk-3-0 libasound2 libasound2-plugins libpulse0 fonts-liberation
 ```
 
-### 3. Setup Environment Variables
+### 3. Install Node.js Dependencies
+```bash
+npm install
+npm install whatsapp-web.js
+npm install dotenv openai node-telegram-bot-api qrcode-terminal
+```
+
+### 4. Setup Environment Variables
 Create a `.env` file in the root folder and add your OpenAI API key:
 ```bash
 OPENAI_API_KEY=your_openai_api_key_here
 ```
 
-### 4. Run the Bot
+### 5. Run the Bot
 **Development mode** (auto-restart with Nodemon):
 ```bash
 npm run dev
