@@ -14,6 +14,51 @@ It provides smart conversations, utility commands, and runs seamlessly with sess
 
 ---
 
+## ⚙️ Setup  
+
+### 1. Clone the Repository  
+```bash
+git clone https://github.com/elethiya/SpiChatBoT-WA.git
+cd SpiChatBoT-WA
+```
+
+### 2. Install System Dependencies (Linux/Ubuntu)
+```bash
+sudo apt update && sudo apt install -y wget curl unzip xdg-utils libnss3 libxss1 libatk1.0-0 libcups2 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libgtk-3-0 libasound2 libasound2-plugins libpulse0 fonts-liberation
+```
+
+### 3. Install Node.js Dependencies
+```bash
+npm install
+npm install whatsapp-web.js
+npm install dotenv openai node-telegram-bot-api qrcode-terminal
+```
+
+### 4. Setup Environment Variables
+Create a `.env` file in the root folder and add your OpenAI API key:
+```bash
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+### 📹 Video Tutorial: Getting OpenAI API Key
+Watch this video tutorial to learn how to get your OpenAI API key:
+
+[![How to get OpenAI API Key](https://img.youtube.com/vi/qtSBVSB1GU0/0.jpg)](https://youtu.be/qtSBVSB1GU0)
+
+*Click the image above to watch the video tutorial on YouTube*
+
+### 5. Run the Bot
+**Development mode** (auto-restart with Nodemon):
+```bash
+npm run dev
+```
+
+**Production mode:**
+```bash
+npm start
+```
+---
+
 ## ✅ Notes:
 
 - `npm start` → Runs the bot normally.
@@ -72,50 +117,6 @@ SpiChatBoT-WA/
 │── .wwebjs_cache/        # WhatsApp cache (ignored)
 ```
 ---
-
-## ⚙️ Setup  
-
-### 1. Clone the Repository  
-```bash
-git clone https://github.com/elethiya/SpiChatBoT-WA.git
-cd SpiChatBoT-WA
-```
-
-### 2. Install System Dependencies (Linux/Ubuntu)
-```bash
-sudo apt update && sudo apt install -y wget curl unzip xdg-utils libnss3 libxss1 libatk1.0-0 libcups2 libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libgtk-3-0 libasound2 libasound2-plugins libpulse0 fonts-liberation
-```
-
-### 3. Install Node.js Dependencies
-```bash
-npm install
-npm install whatsapp-web.js
-npm install dotenv openai node-telegram-bot-api qrcode-terminal
-```
-
-### 4. Setup Environment Variables
-Create a `.env` file in the root folder and add your OpenAI API key:
-```bash
-OPENAI_API_KEY=your_openai_api_key_here
-```
-
-### 📹 Video Tutorial: Getting OpenAI API Key
-Watch this video tutorial to learn how to get your OpenAI API key:
-
-[![How to get OpenAI API Key](https://img.youtube.com/vi/qtSBVSB1GU0/0.jpg)](https://youtu.be/qtSBVSB1GU0)
-
-*Click the image above to watch the video tutorial on YouTube*
-
-### 5. Run the Bot
-**Development mode** (auto-restart with Nodemon):
-```bash
-npm run dev
-```
-
-**Production mode:**
-```bash
-npm start
-```
 
 ### 📖 Available Commands
 
