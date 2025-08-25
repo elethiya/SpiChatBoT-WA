@@ -1,0 +1,41 @@
+{
+  "name": "spichatbot-wa",
+  "version": "1.0.0",
+  "description": "AI-powered WhatsApp chatbot (SpiChatBoT-WA) using whatsapp-web.js and OpenAI GPT-4. Powered by ELETHIYA (Developer: spi_enoxite)",
+  "main": "bot.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "nodemon bot.js"
+  },
+  "author": "spi_enoxite",
+  "organization": "ELETHIYA",
+  "license": "MIT",
+  "keywords": [
+    "whatsapp-bot",
+    "chatbot",
+    "openai",
+    "gpt",
+    "elethiya",
+    "whatsapp-web.js",
+    "nodejs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elethiya/SpiChatBoT-WA.git"
+  },
+  "bugs": {
+    "url": "https://github.com/elethiya/SpiChatBoT-WA/issues"
+  },
+  "homepage": "https://github.com/elethiya/SpiChatBoT-WA#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "openai": "^5.15.0",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.23.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
