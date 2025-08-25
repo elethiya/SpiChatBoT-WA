@@ -1,0 +1,20 @@
+# ==========================
+# Node.js dependencies
+# ==========================
+node_modules/
+
+# ==========================
+# Environment & secrets
+# ==========================
+.env
+
+# ==========================
+# WhatsApp Web.js cache/auth
+# ==========================
+.wwebjs_auth/
+.wwebjs_cache/
+
+# ==========================
+# Optional lock files (if you don’t want to commit)
+# ==========================
+package-lock.json
