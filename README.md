@@ -39,6 +39,8 @@ SpiChatBoT-WA/
 ### 1. Clone the Repository  
 ```
 git clone https://github.com/elethiya/SpiChatBoT-WA.git
+```
+```
 cd SpiChatBoT-WA
 ````
 
@@ -50,27 +52,33 @@ npm install
 3. Setup Environment Variables
 Create a .env file in the root folder and add your OpenAI API key:
 ```
-OPENAI_API_KEY=sk-your_openai_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 4. Run the Bot
 Development mode (auto-restart with Nodemon):
-
+```
 npm run dev
-Production mode:
+```
 
+Production mode:
+```
 npm start
+```
+
 📖 Available Commands
 
-!help   - Show all available commands
-!about  - Show bot details and developer info
-!time   - Get current system time
-!date   - Get today’s date
-hi/hello - Greet the bot
+`!help`   - Show all available commands
+`!about`  - Show bot details and developer info
+`!time`   - Get current system time
+`!date`   - Get today’s date
+`hi`/`hello` - Greet the bot
 <any text> - AI-generated reply using OpenAI GPT
+
 🖼️ First-Time Setup
+
 When you run the bot for the first time, a QR code will appear in your terminal.
-📲 Open WhatsApp → Menu → Linked Devices → Scan the QR.
+📲 `Open WhatsApp` → `Menu` → `Linked Devices` → `Scan the QR`
 Your session will be saved, so you don’t need to scan again.
 
 👨‍💻 Credits
