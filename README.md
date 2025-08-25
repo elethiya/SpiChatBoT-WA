@@ -1,5 +1,7 @@
 # 🤖 SpiChatBoT-WA  
 
+![Logo](https://example.com/logo.png) <!-- Replace with actual logo URL -->
+
 An **AI-powered WhatsApp ChatBot** built using **[whatsapp-web.js](https://github.com/pedroslopez/whatsapp-web.js)** and **OpenAI GPT-4**.  
 It provides smart conversations, utility commands, and runs seamlessly with session persistence.  
 
@@ -11,6 +13,44 @@ It provides smart conversations, utility commands, and runs seamlessly with sess
 - 📖 **Utility commands** (see Available Commands section below)
 - 👋 Friendly greetings: `hi` / `hello`  
 - 🔒 Persistent login with **LocalAuth** (no QR scan every time)  
+
+---
+
+## ✅ Notes:
+
+- `npm start` → Runs the bot normally.
+- `npm run dev` → Runs the bot with nodemon (auto restarts when you change code).
+
+Make sure to install nodemon:
+```bash
+npm install --save-dev nodemon
+```
+
+### Installation Steps:
+1. **Initialize Node project**:
+   ```bash
+   npm init -y
+   ```
+
+2. **Install WhatsApp Web.js (WhatsApp automation library)**:
+   ```bash
+   npm install whatsapp-web.js
+   ```
+
+3. **Install QR code terminal (to display QR for login)**:
+   ```bash
+   npm install qrcode-terminal
+   ```
+
+4. **Install OpenAI SDK (for AI responses)**:
+   ```bash
+   npm install openai
+   ```
+
+5. **(Optional) Install nodemon for auto-restart during development**:
+   ```bash
+   npm install -D nodemon
+   ```
 
 ---
 
@@ -27,7 +67,7 @@ SpiChatBoT-WA/
 │── node_modules/         # Installed packages
 │── .wwebjs_auth/         # WhatsApp auth session (ignored)
 │── .wwebjs_cache/        # WhatsApp cache (ignored)
-
+```
 ---
 
 ## ⚙️ Setup  
