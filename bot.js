@@ -50,32 +50,40 @@ client.on('message', async msg => {
     // ====== 📌 Commands ======
     if (text === '!help') {
         replyText = 
-`*📖 Available Commands:*  
+`🌟 *📖 AVAILABLE COMMANDS* 🌟
 
-➡️ *!about* – Shows bot details and developer info  
-➡️ *!time* – Get the current system time  
-➡️ *!date* – Get today’s date  
-➡️ *!help* – Show all available commands  
-➡️ *hi / hello* – Greet the bot  
-➡️ (any other text) – AI will respond to you`;
+✨ *!about* – Shows bot details and developer info  
+⏰ *!time* – Get the current system time  
+📅 *!date* – Get today's date  
+❓ *!help* – Show all available commands  
+👋 *hi / hello* – Greet the bot  
+🤖 *(any other text)* – AI will respond to you
+
+💡 *Tip:* Just type anything to chat with me!`;
 
     } else if (text === '!about') {
         replyText = 
-`*🤖 About This Bot*  
-_A ChatBoT by -_ *\`ELETHIYA\`*  
-_Developer:_ *spi_enoxite*  
-⚡ *Features:*  
-• AI-powered replies  
-• Utility commands (!time, !date, !help, !about)`;
+`🤖 *✨ ABOUT SPI CHAT BOT ✨*  
+
+_Developed by:_ *\`ELETHIYA\`* 🚀  
+_Creator:_ *spi_enoxite* 👨‍💻  
+
+⚡ *🌟 FEATURES:*  
+• 🤖 AI-powered intelligent responses  
+• ⚡ Quick utility commands  
+• 🔄 Persistent session with LocalAuth  
+• 💬 Natural conversation flow  
+
+🌐 *Powered by:* OpenAI GPT & whatsapp-web.js`;
 
     } else if (text === '!time') {
-        replyText = `⏰ Current system time: *${new Date().toLocaleTimeString()}*`;
+        replyText = `🕰️ *Current System Time:* \n⏰ *${new Date().toLocaleTimeString()}*`;
 
     } else if (text === '!date') {
-        replyText = `📅 Today’s date is: *${new Date().toLocaleDateString()}*`;
+        replyText = `📆 *Today's Date:* \n📅 *${new Date().toLocaleDateString()}*`;
 
     } else if (text === 'hi' || text === 'hello') {
-        replyText = '👋 Hey there! I’m your friendly *SpiChatBoT*. Type *!help* to see what I can do.';
+        replyText = '👋 *Hello there!* 🤗\nI\'m your friendly *SpiChatBoT*! 💫\n\nType *!help* to see what I can do! ✨';
 
     } else {
         // ====== 📌 AI-generated response ======
@@ -83,19 +91,19 @@ _Developer:_ *spi_enoxite*
             const response = await openai.chat.completions.create({
                 model: "gpt-4o-mini",
                 messages: [
-                    { role: "system", content: "You are a friendly AI WhatsApp assistant." },
+                    { role: "system", content: "You are a friendly AI WhatsApp assistant. Use emojis and friendly language. Keep responses engaging and helpful." },
                     { role: "user", content: msg.body }
                 ]
             });
             replyText = response.choices[0].message.content;
         } catch (error) {
             console.error('❌ OpenAI Error:', error);
-            replyText = "⚠️ Sorry, I couldn’t process that.";
+            replyText = "⚠️ *Oops!* 😅\nI couldn't process that request right now. Please try again later!";
         }
     }
 
     // 📌 Add styled credits footer
-    const credits = `\n\n_A ChatBoT by -_ *\`ELETHIYA\`* || _dev -_ *spi_enoxite*`;
+    const credits = `\n\n _A ChatBoT by:_ *\`ELETHIYA\`*  ||  _dev:_ *spi_enoxite* `;
 
     // Send reply with footer
     msg.reply(`${replyText}${credits}`);
