@@ -78,7 +78,9 @@ npm start
 ### 🖼️ First-Time Setup
 
 When you run the bot for the first time, a QR code will appear in your terminal.
+
 📲 `Open WhatsApp` → `Menu` → `Linked Devices` → `Scan the QR`
+
 Your session will be saved, so you don’t need to scan again.
 
 ### 👨‍💻 Credits
