@@ -1,4 +1,4 @@
-# 🤖 SpiChatBoT-WA
+# 🤖 SpiChatBoT-WA  
 
 An **AI-powered WhatsApp ChatBot** built using **[whatsapp-web.js](https://github.com/pedroslopez/whatsapp-web.js)** and **OpenAI GPT-4**.  
 It provides smart conversations, utility commands, and runs seamlessly with session persistence.  
@@ -45,7 +45,12 @@ npm install --save-dev nodemon
    npm install openai
    ```
 
-5. **(Optional) Install nodemon for auto-restart during development**:
+5. **Install dotenv (for managing environment variables)**:
+   ```bash
+   npm install dotenv
+   ```
+
+6. **(Optional) Install nodemon for auto-restart during development**:
    ```bash
    npm install -D nodemon
    ```
