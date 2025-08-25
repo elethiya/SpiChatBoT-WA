@@ -1,6 +1,4 @@
-# 🤖 SpiChatBoT-WA  
-
-![Logo](https://drive.google.com/file/d/1adG3WMi7deP2rwUdxNTvduxm67gGkazR/view?usp=drive_link) <!-- Replace with actual logo URL -->
+# 🤖 SpiChatBoT-WA
 
 An **AI-powered WhatsApp ChatBot** built using **[whatsapp-web.js](https://github.com/pedroslopez/whatsapp-web.js)** and **OpenAI GPT-4**.  
 It provides smart conversations, utility commands, and runs seamlessly with session persistence.  
