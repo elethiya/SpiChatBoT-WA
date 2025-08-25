@@ -99,6 +99,13 @@ Create a `.env` file in the root folder and add your OpenAI API key:
 OPENAI_API_KEY=your_openai_api_key_here
 ```
 
+### 📹 Video Tutorial: Getting OpenAI API Key
+Watch this video tutorial to learn how to get your OpenAI API key:
+
+[![How to get OpenAI API Key](https://img.youtube.com/vi/qtSBVSB1GU0/0.jpg)](https://youtu.be/qtSBVSB1GU0)
+
+*Click the image above to watch the video tutorial on YouTube*
+
 ### 5. Run the Bot
 **Development mode** (auto-restart with Nodemon):
 ```bash
