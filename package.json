@@ -18,7 +18,8 @@
     "gpt",
     "elethiya",
     "whatsapp-web.js",
-    "nodejs"
+    "nodejs",
+    "dotenv"
   ],
   "repository": {
     "type": "git",
