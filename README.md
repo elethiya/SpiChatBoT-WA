@@ -31,9 +31,6 @@ SpiChatBoT-WA/
 │── .wwebjs_auth/ # WhatsApp auth session (ignored)
 │── .wwebjs_cache/ # WhatsApp cache (ignored)
 
-yaml
-Copy
-Edit
 
 ---
 
@@ -44,34 +41,21 @@ Edit
 git clone https://github.com/elethiya/SpiChatBoT-WA.git
 cd SpiChatBoT-WA
 2. Install Dependencies
-bash
-Copy
-Edit
+
 npm install
 3. Setup Environment Variables
 Create a .env file in the root folder and add your OpenAI API key:
 
-ini
-Copy
-Edit
 OPENAI_API_KEY=sk-your_openai_api_key_here
 4. Run the Bot
 Development mode (auto-restart with Nodemon):
 
-bash
-Copy
-Edit
 npm run dev
 Production mode:
 
-bash
-Copy
-Edit
 npm start
 📖 Available Commands
-pgsql
-Copy
-Edit
+
 !help   - Show all available commands
 !about  - Show bot details and developer info
 !time   - Get current system time
