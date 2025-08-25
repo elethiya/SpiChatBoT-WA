@@ -37,16 +37,22 @@ SpiChatBoT-WA/
 ## ⚙️ Setup  
 
 ### 1. Clone the Repository  
-```bash
+```
 git clone https://github.com/elethiya/SpiChatBoT-WA.git
 cd SpiChatBoT-WA
-2. Install Dependencies
+````
 
+2. Install Dependencies
+```
 npm install
+```
+
 3. Setup Environment Variables
 Create a .env file in the root folder and add your OpenAI API key:
-
+```
 OPENAI_API_KEY=sk-your_openai_api_key_here
+```
+
 4. Run the Bot
 Development mode (auto-restart with Nodemon):
 
