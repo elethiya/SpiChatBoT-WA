@@ -1,43 +1,111 @@
-// bot.js
+// bot.js - Enhanced with robust session persistence
 require('dotenv').config();
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 const OpenAI = require('openai');
-
+const fs = require('fs');
+const path = require('path');
 
 // 🔑 Setup OpenAI (use your API key from environment variable)
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
 });
 
-// ✅ Use LocalAuth to save session automatically (no QR scan every restart)
+// 📌 Session Management Functions
+function checkExistingSession() {
+    const authDir = path.join(__dirname, '.wwebjs_auth');
+    try {
+        if (fs.existsSync(authDir)) {
+            const files = fs.readdirSync(authDir);
+            const sessionFiles = files.filter(file => file.endsWith('.json'));
+            return sessionFiles.length > 0;
+        }
+    } catch (error) {
+        console.error('❌ Error checking existing session:', error.message);
+    }
+    return false;
+}
+
+function cleanupOldSessions() {
+    const sessionsDir = path.join(__dirname, 'sessions');
+    try {
+        if (fs.existsSync(sessionsDir)) {
+            const sessionDirs = fs.readdirSync(sessionsDir);
+            sessionDirs.forEach(dir => {
+                if (dir !== 'session-elethiya-bot') {
+                    const dirPath = path.join(sessionsDir, dir);
+                    fs.rmSync(dirPath, { recursive: true, force: true });
+                    console.log(`🧹 Cleaned up old session: ${dir}`);
+                }
+            });
+        }
+    } catch (error) {
+        console.error('❌ Error cleaning up old sessions:', error.message);
+    }
+}
+
+// 🧹 Clean up old sessions before starting
+cleanupOldSessions();
+
+// ✅ Use LocalAuth to save session automatically
 const client = new Client({
-  authStrategy: new LocalAuth({ clientId: "elethiya-bot" }),
-  puppeteer: {
-    headless: true,
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage',
-      '--disable-accelerated-2d-canvas',
-      '--no-first-run',
-      '--no-zygote',
-      '--single-process', // 👈 sometimes helps in Linux
-      '--disable-gpu'
-    ]
-  }
+    authStrategy: new LocalAuth({ 
+        clientId: "elethiya-bot",
+        dataPath: "./.wwebjs_auth"
+    }),
+    puppeteer: {
+        headless: true,
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-accelerated-2d-canvas',
+            '--no-first-run',
+            '--no-zygote',
+            '--single-process',
+            '--disable-gpu',
+            '--user-data-dir=./sessions/session-elethiya-bot'
+        ]
+    }
 });
 
+// 📌 Check if session already exists
+const hasExistingSession = checkExistingSession();
+if (hasExistingSession) {
+    console.log('✅ Found existing session. Will attempt to restore...');
+} else {
+    console.log('🔍 No existing session found. Will require QR code scan.');
+}
 
-// 📌 QR Code Login (only first time)
+// 📌 Authentication Events with Enhanced Logging
 client.on('qr', qr => {
+    console.log('🔐 QR Code Generated:');
     qrcode.generate(qr, { small: true });
-    console.log('📲 Scan this QR code with your WhatsApp (only once).');
+    console.log('📲 Scan this QR code with your WhatsApp to authenticate.');
+    console.log('💡 This should only be required once!');
 });
 
-// 📌 When Bot is Ready
+client.on('authenticated', () => {
+    console.log('✅ Authentication successful! Session saved.');
+    console.log('🔒 You should not need to scan QR code again on next restart.');
+});
+
+client.on('auth_failure', msg => {
+    console.error('❌ Authentication failed:', msg);
+    console.log('🔄 Please restart the bot and scan QR code again.');
+});
+
 client.on('ready', () => {
-    console.log('✅ WhatsApp bot with AI is ready!');
+    console.log('🎉 WhatsApp bot with AI is ready and authenticated!');
+    console.log('🤖 Bot is now listening for messages...');
+});
+
+client.on('disconnected', (reason) => {
+    console.log('🔌 Client was logged out:', reason);
+    console.log('🔄 Restarting bot in 5 seconds...');
+    setTimeout(() => {
+        client.initialize();
+    }, 5000);
 });
 
 // 📌 Handle Incoming Messages
@@ -74,7 +142,7 @@ _Creator:_ *spi_enoxite* 👨‍💻
 • 🔄 Persistent session with LocalAuth  
 • 💬 Natural conversation flow  
 
-🌐 *Powered by:* OpenAI GPT & whatsapp-web.js`;
+🌐 *Powered by:* OpenAI & whatsapp-web.js`;
 
     } else if (text === '!time') {
         replyText = `🕰️ *Current System Time:* \n⏰ *${new Date().toLocaleTimeString()}*`;
@@ -84,6 +152,9 @@ _Creator:_ *spi_enoxite* 👨‍💻
 
     } else if (text === 'hi' || text === 'hello') {
         replyText = '👋 *Hello there!* 🤗\nI\'m your friendly *SpiChatBoT*! 💫\n\nType *!help* to see what I can do! ✨';
+
+    } else if (text === '!session') {
+        replyText = `🔐 *Session Status:* ${hasExistingSession ? '✅ Persistent session active' : '🔄 Requires authentication'}`;
 
     } else {
         // ====== 📌 AI-generated response ======
@@ -109,5 +180,27 @@ _Creator:_ *spi_enoxite* 👨‍💻
     msg.reply(`${replyText}${credits}`);
 });
 
-// 🚀 Start the bot
-client.initialize();
+// 📌 Graceful shutdown handling
+process.on('SIGINT', async () => {
+    console.log('\n🛑 Shutting down gracefully...');
+    console.log('💾 Ensuring session is properly saved...');
+    try {
+        await client.destroy();
+        console.log('✅ Session saved successfully.');
+    } catch (error) {
+        console.error('❌ Error during shutdown:', error);
+    }
+    process.exit(0);
+});
+
+// 🚀 Start the bot with enhanced error handling
+console.log('🚀 Starting WhatsApp bot with persistent session...');
+console.log('📁 Session will be saved in: .wwebjs_auth/');
+
+client.initialize().catch(error => {
+    console.error('❌ Failed to initialize bot:', error);
+    console.log('🔄 Restarting in 10 seconds...');
+    setTimeout(() => {
+        client.initialize();
+    }, 10000);
+});
